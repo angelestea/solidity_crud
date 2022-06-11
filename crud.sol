@@ -1,12 +1,7 @@
 pragma solidity ^0.8.6;
 contract taskContract{
     uint nextId;
-
-    struct UserDeleted{
-        string message;
-    }
-    
-    UserDeleted userDeleted;
+    string status = "User deleted";
 
     struct User{
         uint id;
@@ -45,10 +40,9 @@ contract taskContract{
         users[index].conected = _conected;
     }
 
-    function deleteUser(uint _id) public view returns (string memory) {
+    function deleteUser(uint _id) public returns (string memory) {
         uint index = findUserIndex(_id);
         delete users[index];
-        return userDeleted.message = "User deleted";
-
+        return status;
     }
 }
